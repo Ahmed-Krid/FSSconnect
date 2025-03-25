@@ -5,3 +5,9 @@ import 'package:flutter/material.dart';
   const primary_color = Color.fromARGB(255, 0, 0, 0);
 
 //hetha el file te3 les contantes eli kolna nestamlouhem kima les bouton ou colors  bech kolna fard manthar
+
+
+// icons 
+
+const _home = Icons.home ;
+const _cours = Icons.book;

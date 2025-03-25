@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class CustomNavigationBar extends StatefulWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
@@ -85,7 +86,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 return CustomPaint(
                   painter: NavBarPainter(
                     selectedPosition: _positionAnimation.value,
-                    color: const Color(0xFF1B5E20),
+                    color: const Color(0xFF519465),
                   ),
                   child: Container(
                     height: 80,
@@ -231,7 +232,7 @@ class NavBarItem extends StatelessWidget {
               transform: Matrix4.translationValues(0, upwardTranslation, 0),
               child: Icon(
                 icon,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
                 size: isSelected ? 28 : 24,
               ),
             ),
