@@ -1,68 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/widgets/navigation_bar.dart';
-
-class HomeScreen extends StatelessWidget {
+import'package:front_end/widgets/top_navigation_bar.dart';
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-  final int _currentIndex = 1;
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 2; // Default to home tab
+
+  void _onItemSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildHeader(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 20),
-                    _buildWelcomeSection(),
-                    const SizedBox(height: 20),
-                    Expanded(
-                      child: _buildNotificationsSection(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const CustomNavigationBar(selectedIndex: 1),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Stack(
         children: [
-          Row(
-            children: [
-              const Icon(Icons.person_outline, size: 24),
-              const SizedBox(width: 10),
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black, width: 1),
+          SafeArea(
+            child: Column(
+              children: [
+                const TopNavigationBar(),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        _buildWelcomeSection(),
+                        const SizedBox(height: 20),
+                        Expanded(
+                          child: _buildNotificationsSection(),
+                        ),
+                        // Add extra space at the bottom for the navigation bar
+                        const SizedBox(height: 100),
+                      ],
+                    ),
+                  ),
                 ),
-                child: const Icon(Icons.chat_bubble_outline, size: 18),
-              ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1),
-              borderRadius: BorderRadius.circular(8),
+              ],
             ),
-            child: const Icon(Icons.badge_outlined, size: 24),
+          ),
+          // Position the custom navigation bar at the bottom
+          CustomNavigationBar(
+            selectedIndex: _selectedIndex,
+            onItemSelected: _onItemSelected,
           ),
         ],
       ),
@@ -146,7 +135,7 @@ class HomeScreen extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24), // Made bigger
         decoration: BoxDecoration(
           color: const Color(0xFFAED581),
           borderRadius: BorderRadius.circular(16),
@@ -154,19 +143,19 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(10), // Made bigger
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(icon, size: 24),
+              child: Icon(icon, size: 28), // Made bigger
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 20), // More spacing
             Expanded(
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 18, // Made bigger
                   fontWeight: FontWeight.bold,
                 ),
               ),
