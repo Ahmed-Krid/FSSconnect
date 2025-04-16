@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/widgets/navigation_bar.dart';
 import'package:front_end/widgets/top_navigation_bar.dart';
+import 'package:front_end/widgets/bottom_navigation _bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -9,8 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 2; // Default to home tab
-
+  int _selectedIndex = 2; 
   void _onItemSelected(int index) {
     setState(() {
       _selectedIndex = index;
@@ -49,9 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           // Position the custom navigation bar at the bottom
-          CustomNavigationBar(
-            selectedIndex: _selectedIndex,
-            onItemSelected: _onItemSelected,
+          CustomBottomNavBar(
+          currentIndex: _selectedIndex,
+            onTap: _onItemSelected,
           ),
         ],
       ),
