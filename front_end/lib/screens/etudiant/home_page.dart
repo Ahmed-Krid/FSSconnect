@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/ahmed/widgets/navigation_bar.dart';
-import'package:front_end/ahmed/widgets/top_navigation_bar.dart';
+import 'package:front_end/widgets/navigation_bar.dart';
+import'package:front_end/widgets/top_navigation_bar.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
