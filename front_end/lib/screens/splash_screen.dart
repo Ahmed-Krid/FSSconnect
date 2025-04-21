@@ -35,7 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
               "FSS Connect",
               style: TextStyle(color: const Color.fromARGB(255, 110, 110, 109), fontSize: 27),
             ),
-    
             SizedBox(height: 70),
             Text(
               "Bienvenue!",

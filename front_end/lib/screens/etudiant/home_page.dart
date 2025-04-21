@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import'package:front_end/widgets/top_navigation_bar.dart';
 import 'package:front_end/widgets/bottom_navigation _bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
