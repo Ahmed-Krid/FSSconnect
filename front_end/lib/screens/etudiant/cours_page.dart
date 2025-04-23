@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'profile_etudiant.dart';
-//import 'profile_enseignant.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CoursPage(),
-    );
-  }
-}
 
 // Page de détails du cours
 class CourseDetailPage extends StatelessWidget {

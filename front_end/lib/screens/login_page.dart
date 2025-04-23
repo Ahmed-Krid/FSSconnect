@@ -40,7 +40,7 @@ void _login() {
     } else if (_userType == "Enseignant") {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()), // Remplace par la bonne page
+        MaterialPageRoute(builder: (context) => HomeScreenenseignant()), // Remplace par la bonne page
       );
     }
   }

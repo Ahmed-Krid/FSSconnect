@@ -2,26 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart'; // Pour la sélection de fichiers
 import 'dart:ui'; // Pour l'effet de flou
 
-void main() {
-  runApp(const MyApp());
-}
-//maiem
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Offres de Stages',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        scaffoldBackgroundColor: Colors.grey[100],
-      ),
-      home: const InternshipOffersPage(),
-    );
-  }
-}
 
 class InternshipOffersPage extends StatefulWidget {
   const InternshipOffersPage({super.key});

@@ -1,43 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() {
-  runApp(const TestApp());
-}
-
-class TestApp extends StatefulWidget {
-  const TestApp({super.key});
-
-  @override
-  State<TestApp> createState() => _TestAppState();
-}
-
-class _TestAppState extends State<TestApp> {
-  int _currentIndex = 2;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Selected Index: $_currentIndex'),
-        ),
-        bottomNavigationBar: CustomBottomNavBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-
-        ),
-
-        ),
-      );
-
-  }
-}
-
+// Navigation item model
 class NavItem {
   final IconData icon;
   final String label;
@@ -45,6 +9,7 @@ class NavItem {
   const NavItem({required this.icon, required this.label});
 }
 
+// Custom bottom navigation bar
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -56,7 +21,7 @@ class CustomBottomNavBar extends StatefulWidget {
     NavItem(icon: FontAwesomeIcons.book, label: 'Cours'),
   ];
 
-   CustomBottomNavBar({
+  CustomBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
@@ -163,8 +128,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF000000),
+                      ),
                     ),
-                  ),
                   ),
                 ],
               ),
@@ -236,5 +201,43 @@ class NavBarCutoutPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
+  }
+}
+
+// Main page implementation using the custom navigation bar
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 2; // Start with Home selected (index 2)
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // Your main content goes here
+      body: Center(
+        child: Text('Page $_currentIndex content'),
+      ),
+      
+      // Position the navigation bar at the bottom with proper padding
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0),
+        child: CustomBottomNavBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
+      ),
+      
+      // Remove default bottom padding to avoid double padding
+      extendBody: true,
+    );
   }
 }
