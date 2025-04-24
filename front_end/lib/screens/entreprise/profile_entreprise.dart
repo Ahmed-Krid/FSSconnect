@@ -1,16 +1,14 @@
-//page de profile enseignant 
+//page de profil de l'entreprise
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProfilePageEns extends StatefulWidget {
-  const ProfilePageEns({super.key});
-
+class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePageEns> {
+class _ProfilePageState extends State<ProfilePage> {
   bool isNotificationsEnabled = false;
   bool isDarkMode = false;
   bool obscureText = true;
@@ -18,14 +16,14 @@ class _ProfilePageState extends State<ProfilePageEns> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.grey[700] : const Color(0xFFCDC0AA),
+      backgroundColor: isDarkMode ? Colors.grey[800] : const Color(0xFFF1E6D4),
       appBar: AppBar(
         backgroundColor:
-            isDarkMode ? Colors.grey[700] : const Color(0xFFCDC0AA),
+            isDarkMode ? Colors.grey[800] : const Color(0xFFF1E6D4),
         elevation: 0,
         leading: IconButton(
           icon:
-              const Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 0, 0)),
+              Icon(Icons.arrow_back, color: const Color.fromARGB(255, 0, 0, 0)),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -37,49 +35,27 @@ class _ProfilePageState extends State<ProfilePageEns> {
             width: double.infinity,
             height: 150,
             decoration: BoxDecoration(
-              color: isDarkMode ? Colors.grey[700] : const Color(0xFFCDC0AA),
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
+              color: const Color(0xFFF1E6D4),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(0),
+                bottomRight: Radius.circular(0),
               ),
             ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Row(
                 children: [
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Color(0xFFD8EADE),
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 70,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: CircleAvatar(
-                          radius: 12,
-                          backgroundColor: Color(0xFF539867),
-                          child: Icon(FontAwesomeIcons.plus,
-                              size: 15, color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  ),
                   SizedBox(width: 15),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Nom et prenom du prof',
+                        'Nom de l\'entreprise',
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 0, 0, 0)),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromRGBO(0, 0, 0, 1),
+                        ),
                       ),
                     ],
                   ),
@@ -91,29 +67,27 @@ class _ProfilePageState extends State<ProfilePageEns> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: isDarkMode ? Colors.grey[800] : const Color(0xFFF3EAEA),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+                color: isDarkMode ? Colors.grey[800] : const Color(0xFFF3F0F0),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(0),
                 ),
               ),
               child: ListView(
                 children: [
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                     decoration: BoxDecoration(
                       color: isDarkMode
                           ? Colors.grey[800]
-                          : const Color(0xFFF3EAEA),
-                      borderRadius: BorderRadius.circular(45),
+                          : const Color(0xFFF3F0F0),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Nom d\'utilisateur:',
+                          'Nom de l\'entreprise:',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: isDarkMode ? Colors.white : Colors.black),
@@ -131,7 +105,7 @@ class _ProfilePageState extends State<ProfilePageEns> {
                                     isDarkMode ? Colors.white : Colors.black),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15),
                         Text(
                           'Adresse E-mail:',
                           style: TextStyle(
@@ -151,7 +125,7 @@ class _ProfilePageState extends State<ProfilePageEns> {
                                     isDarkMode ? Colors.white : Colors.black),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15),
                         Text(
                           'Mot de passe:',
                           style: TextStyle(
@@ -185,7 +159,7 @@ class _ProfilePageState extends State<ProfilePageEns> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15),
                         SwitchListTile(
                           title: Text('Activer les notifications',
                               style: TextStyle(
@@ -200,7 +174,7 @@ class _ProfilePageState extends State<ProfilePageEns> {
                           },
                           activeColor: const Color(0xFF34C759),
                         ),
-                        const Divider(color: Color.fromARGB(255, 43, 42, 42)),
+                        Divider(color: const Color.fromARGB(255, 43, 42, 42)),
                         SwitchListTile(
                           title: Text('Mode sombre',
                               style: TextStyle(
@@ -215,27 +189,29 @@ class _ProfilePageState extends State<ProfilePageEns> {
                           },
                           activeColor: const Color(0xFF34C759),
                         ),
-                        const Divider(color: Color.fromARGB(255, 43, 42, 42)),
-                        const SizedBox(height: 20),
+                        Divider(color: const Color.fromARGB(255, 43, 42, 42)),
+                        SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 30),
-                                backgroundColor: const Color(0xFF539867),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              child: const Text(
+                              onPressed: () {
+                                // Ici tu peux ajouter des actions pour l'enregistrement, mais pour l'instant ça ne fait rien
+                              },
+                              child: Text(
                                 'Enregistrer',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 30),
+                                backgroundColor: Color(0xFF539867),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                             ),
