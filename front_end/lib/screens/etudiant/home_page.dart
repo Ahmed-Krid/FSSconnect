@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import'package:front_end/widgets/top_navigation_bar.dart';
-import 'package:front_end/widgets/bottom_navigation _bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:front_end/widgets/top_navigation_bar.dart';
+import 'package:front_end/widgets/bottom_navigation_bar.dart';  // Fixed space in import
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -49,16 +50,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           // Position the custom navigation bar at the bottom
-          CustomBottomNavBar(
-          currentIndex: _selectedIndex,
-            onTap: _onItemSelected,
+          Positioned(
+            bottom: 16,  // Add some padding from bottom
+            left: 0,
+            right: 0,
+            child: CustomBottomNavBar(
+              currentIndex: _selectedIndex,
+              onTap: _onItemSelected,
+            ),
           ),
         ],
       ),
     );
   }
 
+  // The rest of your code remains unchanged...
   Widget _buildWelcomeSection() {
+    // Existing implementation
     return Row(
       children: [
         Container(
@@ -96,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNotificationsSection() {
+    // Existing implementation
     return Column(
       children: [
         _buildNotificationCard(
@@ -130,12 +139,13 @@ class _HomeScreenState extends State<HomeScreen> {
     required String title,
     required VoidCallback onTap,
   }) {
+    // Existing implementation
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24), // Made bigger
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         decoration: BoxDecoration(
           color: const Color(0xFFAED581),
           borderRadius: BorderRadius.circular(16),
@@ -143,19 +153,19 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(10), // Made bigger
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(icon, size: 28), // Made bigger
+              child: Icon(icon, size: 28),
             ),
-            const SizedBox(width: 20), // More spacing
+            const SizedBox(width: 20),
             Expanded(
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18, // Made bigger
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -166,4 +176,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
